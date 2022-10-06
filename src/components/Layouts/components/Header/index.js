@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
-import classNames from 'classnames/bind'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark, faCircleNotch, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import classNames from 'classnames/bind'
 import Tippy from '@tippyjs/react/headless'
 
+import Button from '~/components/Button'
 import { Wrapper as PopperWrapper } from '~/components/Popper'
 import styles from './Header.module.scss'
 import images from '~/assets/images'
@@ -25,7 +27,9 @@ export default function Header() {
       <div className={cx('inner')}>
         {/* Logo */}
         <div className={cx('logo')}>
-          <img src={images.logo} alt='Tiktok' />
+          <Link to='/'>
+            <img src={images.logo} alt='Tiktok' />
+          </Link>
         </div>
 
         {/* Search */}
@@ -58,7 +62,12 @@ export default function Header() {
         </Tippy>
 
         {/* Actions */}
-        <div className={cx('actions')}></div>
+        <div className={cx('actions')}>
+          <Button text to='/upload'>
+            Upload
+          </Button>
+          <Button primary>Log in</Button>
+        </div>
       </div>
     </header>
   )
