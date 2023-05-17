@@ -25,7 +25,7 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
-import { MessageIcon, UploadIcon } from '~/components/icons';
+import { MessageIcon, UploadIcon, InboxIcon } from '~/components/icons';
 import Image from '~/components/image';
 
 const cx = classNames.bind(styles);
@@ -154,9 +154,14 @@ export default function Header() {
                   <UploadIcon />
                 </button>
               </Tippy>
-              <Tippy delay={[0, 100]} content="Notifycation" placement="bottom">
+              <Tippy delay={[0, 100]} content="Message" placement="bottom">
                 <button className={cx('action-btn')}>
                   <MessageIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 100]} content="Notifycation" placement="bottom">
+                <button className={cx('action-btn')}>
+                  <InboxIcon />
                 </button>
               </Tippy>
             </>
