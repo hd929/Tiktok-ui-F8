@@ -9,8 +9,6 @@ import {
   faGlobe,
   faCircleQuestion,
   faKeyboard,
-  faCloudUpload,
-  faMessage,
   faUser,
   faCoins,
   faGear,
@@ -27,6 +25,8 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
+import { MessageIcon, UploadIcon } from '~/components/icons';
+import Image from '~/components/image';
 
 const cx = classNames.bind(styles);
 
@@ -151,12 +151,12 @@ export default function Header() {
             <>
               <Tippy delay={[0, 100]} content="Upload video" placement="bottom">
                 <button className={cx('action-btn')}>
-                  <FontAwesomeIcon icon={faCloudUpload} />
+                  <UploadIcon />
                 </button>
               </Tippy>
               <Tippy delay={[0, 100]} content="Notifycation" placement="bottom">
                 <button className={cx('action-btn')}>
-                  <FontAwesomeIcon icon={faMessage} />
+                  <MessageIcon />
                 </button>
               </Tippy>
             </>
@@ -170,7 +170,7 @@ export default function Header() {
           )}
           <Menu items={currentUser ? USER_MENU : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <img
+              <Image
                 className={cx('user-avatar')}
                 alt="Avatar"
                 src="https://yt3.googleusercontent.com/UsflU74uvka_3sejOu3LUGwzOhHJV0eIYoWcvOfkOre_c12uIN4ys-QqRlAkbusEmbZjTA-b=s176-c-k-c0x00ffffff-no-rj"
