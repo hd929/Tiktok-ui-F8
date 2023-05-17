@@ -6,9 +6,10 @@
   &::before {
     content: '';
     position: absolute;
-    top: -10%;
-    right: 0;
-    border: 26px solid;
+    pointer-events: none;
+    top: -6%;
+    left: 84%;
+    border: 10px solid;
     border-color: transparent transparent #ffffff transparent;
   }
 
