@@ -1,19 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCircleXmark,
-  faCircleNotch,
-  faMagnifyingGlass,
-  faEllipsisVertical,
-  faGlobe,
-  faCircleQuestion,
-  faKeyboard,
-  faUser,
-  faCoins,
-  faGear,
-  faSignOut,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faCircleNotch, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -25,14 +13,26 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
-import { MessageIcon, UploadIcon, InboxIcon } from '~/components/icons';
+import {
+  MessageIcon,
+  UploadIcon,
+  InboxIcon,
+  SearchIcon,
+  UserIcon,
+  LanguageIcon,
+  TiktokCoin,
+  GearIcon,
+  FeedbackIcon,
+  CircleKeyboardIcon,
+  LogoutIcon,
+} from '~/components/icons';
 import Image from '~/components/image';
 
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
   {
-    icon: <FontAwesomeIcon icon={faGlobe} />,
+    icon: <LanguageIcon />,
     title: 'English',
     children: {
       title: 'Language',
@@ -51,34 +51,34 @@ const MENU_ITEMS = [
     },
   },
   {
-    icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+    icon: <FeedbackIcon />,
     title: 'Feedback and help',
     to: '/feedback',
   },
   {
-    icon: <FontAwesomeIcon icon={faKeyboard} />,
+    icon: <CircleKeyboardIcon />,
     title: 'Keyboard shortcuts',
   },
 ];
 
 const USER_MENU = [
   {
-    icon: <FontAwesomeIcon icon={faUser} />,
+    icon: <UserIcon />,
     title: 'View profile',
   },
   {
-    icon: <FontAwesomeIcon icon={faCoins} />,
+    icon: <TiktokCoin />,
     title: 'Get coin',
     to: 'coin',
   },
   {
-    icon: <FontAwesomeIcon icon={faGear} />,
+    icon: <GearIcon />,
     title: 'Settings',
     to: '/settings',
   },
   ...MENU_ITEMS,
   {
-    icon: <FontAwesomeIcon icon={faSignOut} />,
+    icon: <LogoutIcon />,
     title: 'Log out',
     to: '/logout',
     separate: true,
@@ -141,7 +141,7 @@ export default function Header() {
             <FontAwesomeIcon className={cx('loading')} icon={faCircleNotch} />
 
             <button className={cx('search-btn')}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <SearchIcon />
             </button>
           </div>
         </HeadlessTippy>
