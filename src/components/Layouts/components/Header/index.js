@@ -9,7 +9,7 @@ import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
-import Search from '../Search'
+import Search from '../Search';
 import {
   MessageIcon,
   UploadIcon,
@@ -112,9 +112,9 @@ export default function Header() {
           {currentUser ? (
             <>
               <Tippy delay={[0, 100]} content="Upload video" placement="bottom">
-                <button className={cx('action-btn')}>
+                <Link className={cx('action-btn')} to="/upload">
                   <UploadIcon />
-                </button>
+                </Link>
               </Tippy>
               <Tippy delay={[0, 100]} content="Message" placement="bottom">
                 <button className={cx('action-btn')}>
