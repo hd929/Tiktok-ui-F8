@@ -112,9 +112,9 @@ export default function Header() {
           {currentUser ? (
             <>
               <Tippy delay={[0, 100]} content="Upload video" placement="bottom">
-                <Link className={cx('action-btn')} to="/upload">
+                <button className={cx('action-btn')} to="/upload">
                   <UploadIcon />
-                </Link>
+                </button>
               </Tippy>
               <Tippy delay={[0, 100]} content="Message" placement="bottom">
                 <button className={cx('action-btn')}>
