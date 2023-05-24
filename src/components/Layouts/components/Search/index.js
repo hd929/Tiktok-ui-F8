@@ -18,15 +18,26 @@ function Search() {
 
   const inputRef = useRef();
 
+  useEffect(() => {
+    if (!searchValue) return;
+    else if (searchValue.startsWith(' ')) return;
+
+    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${searchValue}&type=less`)
+      .then((res) => res.json())
+      .then((result) => {
+        setSearchResult(result.data);
+      });
+  }, [searchValue]);
+
+  const handleClearSearch = () => {
+    setSearchValue('');
+    setSearchResult([]);
+    inputRef.current.focus();
+  };
+
   const handleHideResult = () => {
     setShowResult(false);
   };
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([1, 1, 1]);
-    }, 0);
-  }, []);
 
   return (
     <HeadlessTippy
@@ -36,10 +47,9 @@ function Search() {
         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
           <PopperWrapper>
             <h4 className={cx('search-title')}>Accounts</h4>
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
+            {searchResult.map((result) => (
+              <AccountItem key={result.id} data={result} />
+            ))}
           </PopperWrapper>
         </div>
       )}
@@ -59,13 +69,7 @@ function Search() {
           }}
         />
         {!!searchValue && (
-          <button
-            className={cx('clear')}
-            onClick={() => {
-              setSearchValue('');
-              inputRef.current.focus();
-            }}
-          >
+          <button className={cx('clear')} onClick={handleClearSearch}>
             <FontAwesomeIcon icon={faCircleXmark} />
           </button>
         )}
