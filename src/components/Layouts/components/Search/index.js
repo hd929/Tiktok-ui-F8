@@ -15,17 +15,28 @@ function Search() {
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [showResult, setShowResult] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const inputRef = useRef();
 
   useEffect(() => {
-    if (!searchValue) return;
-    else if (searchValue.startsWith(' ')) return;
+    if (!searchValue || searchValue.startsWith(' ')) {
+      setSearchResult([]);
+      setLoading(false);
+      return;
+    }
 
-    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${searchValue}&type=less`)
+    setLoading(true);
+
+    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
       .then((res) => res.json())
       .then((result) => {
         setSearchResult(result.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
       });
   }, [searchValue]);
 
@@ -68,12 +79,12 @@ function Search() {
             setShowResult(true);
           }}
         />
-        {!!searchValue && (
+        {!!searchValue && !loading && (
           <button className={cx('clear')} onClick={handleClearSearch}>
             <FontAwesomeIcon icon={faCircleXmark} />
           </button>
         )}
-        {/* <FontAwesomeIcon className={cx('loading')} icon={faCircleNotch} /> */}
+        {loading && <FontAwesomeIcon className={cx('loading')} icon={faCircleNotch} />}
 
         <button className={cx('search-btn')}>
           <SearchIcon />
