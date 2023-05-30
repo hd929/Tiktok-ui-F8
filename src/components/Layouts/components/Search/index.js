@@ -54,7 +54,9 @@ function Search() {
   };
 
   const handleChange = (e) => {
-    setSearchValue(e.target.value);
+    const searchValue = e.target.value;
+
+    if (!searchValue.startsWith(' ')) setSearchValue(searchValue);
   };
 
   return (
