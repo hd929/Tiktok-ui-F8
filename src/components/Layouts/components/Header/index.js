@@ -10,6 +10,7 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
 import Search from '../Search';
+import routesConfig from '~/config/routes';
 import {
   MessageIcon,
   UploadIcon,
@@ -100,7 +101,7 @@ export default function Header() {
       <div className={cx('inner')}>
         {/* Logo */}
         <div className={cx('logo')}>
-          <Link to="/">
+          <Link to={routesConfig.home} className={cx('link')}>
             <img src={images.logo} alt="Tiktok" />
           </Link>
         </div>
@@ -112,9 +113,9 @@ export default function Header() {
           {currentUser ? (
             <>
               <Tippy delay={[0, 100]} content="Upload video" placement="bottom">
-                <button className={cx('action-btn')} to="/upload">
+                <Link className={cx('action-btn', 'link')} to={routesConfig.upload}>
                   <UploadIcon />
-                </button>
+                </Link>
               </Tippy>
               <Tippy delay={[0, 100]} content="Message" placement="bottom">
                 <button className={cx('action-btn')}>
