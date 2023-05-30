@@ -14,11 +14,13 @@
   border-radius: 92px;
 
   input {
+    font-family: var(--font-family);
     flex: 1;
     height: 100%;
     color: var(--black);
     caret-color: var(--primary);
     font-size: 1.6rem;
+    font-weight: 600;
     background-color: transparent;
   }
 

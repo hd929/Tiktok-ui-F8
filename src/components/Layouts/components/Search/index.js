@@ -53,6 +53,10 @@ function Search() {
     setShowResult(false);
   };
 
+  const handleChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
   return (
     <HeadlessTippy
       interactive={true}
@@ -75,9 +79,7 @@ function Search() {
           value={searchValue}
           placeholder="Search accounts and videos"
           spellCheck={false}
-          onChange={(e) => {
-            setSearchValue(e.target.value);
-          }}
+          onChange={handleChange}
           onFocus={() => {
             setShowResult(true);
           }}
