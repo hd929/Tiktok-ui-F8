@@ -2,7 +2,7 @@ import { faCircleXmark, faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
@@ -53,11 +53,11 @@ function Search() {
     setShowResult(false);
   };
 
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     const searchValue = e.target.value;
 
     if (!searchValue.startsWith(' ')) setSearchValue(searchValue);
-  };
+  }, []);
 
   return (
     <div>
