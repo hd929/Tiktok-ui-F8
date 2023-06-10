@@ -9,15 +9,15 @@ import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
 import Feedback from '~/pages/Feedback';
 
-import routesConfig from '~/config/routes';
+import config from '~/config';
 
 const publicRoutes = [
-  { path: routesConfig.home, component: Home },
-  { path: routesConfig.following, component: Following },
-  { path: routesConfig.nickname, component: Profile },
-  { path: routesConfig.upload, component: Upload, layout: HeaderOnly },
-  { path: routesConfig.search, component: Search, layout: null },
-  { path: routesConfig.feedback, component: Feedback, layout: null },
+  { path: config.routes.home, component: Home },
+  { path: config.routes.following, component: Following },
+  { path: config.routes.nickname, component: Profile },
+  { path: config.routes.upload, component: Upload, layout: HeaderOnly },
+  { path: config.routes.search, component: Search, layout: null },
+  { path: config.routes.feedback, component: Feedback, layout: null },
 ];
 
 const privateRoutes = [];
