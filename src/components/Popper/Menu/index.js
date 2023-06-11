@@ -17,14 +17,14 @@ export default function Menu({ children, items = [], onChange = defaultFn }) {
 
   const renderItems = () => {
     return current.data.map((item, index) => {
-      const isPrarent = !!item.children;
+      const isParent = !!item.children;
 
       return (
         <MenuItem
           key={index}
           data={item}
           onClick={() => {
-            if (isPrarent) {
+            if (isParent) {
               setHistory((prev) => [...prev, item.children]);
             } else {
               onChange(item);
