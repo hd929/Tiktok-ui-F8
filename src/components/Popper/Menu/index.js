@@ -47,7 +47,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
           <PopperWrapper className={cx('menu-popper')}>
             {history.length > 1 && (
               <Header
-                title="Language"
+                title={current.title}
                 onBack={() => {
                   setHistory((prev) => prev.slice(0, prev.length - 1));
                 }}
@@ -66,7 +66,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
 
 Menu.propTypes = {
   children: PropTypes.node.isRequired,
-  item: PropTypes.array.isRequired,
+  item: PropTypes.array,
   onChange: PropTypes.func,
 };
 
