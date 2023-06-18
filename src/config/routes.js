@@ -5,6 +5,7 @@ const routes = {
   nickname: '/@:nickname',
   search: '/search',
   feedback: '/feedback',
+  add: '/add',
 };
 
 export default routes;
