@@ -6,6 +6,7 @@ const routes = {
   search: '/search',
   feedback: '/feedback',
   add: '/add',
+  live: '/live',
 };
 
 export default routes;
