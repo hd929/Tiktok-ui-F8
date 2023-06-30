@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 
 import styles from './addUser.module.scss';
 import Button from '~/components/Button/Button';
+import * as userService from '~/services/userService';
 
 const cx = classNames.bind(styles);
 
@@ -30,12 +31,13 @@ function AddUser() {
     formData.append('followings_count', followings);
     formData.append('tick', tick ? 1 : 0);
 
-    try {
-      const response = await axios.post('https://api.tiktok.local/api/users', formData);
-      setResult(response.data.Result);
-    } catch (error) {
-      setResult('Operation Failed');
-    }
+    const postUser = async () => {
+      const result = await userService.add(formData);
+
+      setResult(result);
+    };
+
+    postUser();
   };
 
   return (
