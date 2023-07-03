@@ -2,18 +2,20 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import numeral from 'numeral';
 
 import styles from './AccountPreview.module.scss';
 import Button from '~/components/Button';
+import Image from '~/components/image';
 
 const cx = classNames.bind(styles);
 
-function AccountPreview() {
+function AccountPreview({ data }) {
   return (
     <div className={cx('wrapper')}>
       {/* Header */}
       <header className={cx('header')}>
-        <img className={cx('avatar')} src="https://picsum.photos/200/200" alt="" />
+        <Image className={cx('avatar')} src={data.avatar} alt={data.full_name} />
         <Button className={cx('follow-btn')} primary>
           Follow
         </Button>
@@ -22,14 +24,14 @@ function AccountPreview() {
       {/* Body */}
       <div className={cx('body')}>
         <p className={cx('nickname')}>
-          <strong>kogi_1011</strong>
-          <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
+          <strong>{data.nickname}</strong>
+          {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />}
         </p>
-        <p className={cx('name')}>KOGI</p>
+        <p className={cx('name')}>{data.full_name}</p>
         <p className={cx('analytics')}>
-          <strong className={cx('value')}>8.2M</strong>
+          <strong className={cx('value')}>{numeral(data.followings_count).format('0.0a')}</strong>
           <span className={cx('label')}>Follower</span>
-          <strong className={cx('value')}>8.2M</strong>
+          <strong className={cx('value')}>{numeral(data.likes_count).format('0.0a')}</strong>
           <span className={cx('label')}>Likes</span>
         </p>
       </div>

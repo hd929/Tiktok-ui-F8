@@ -8,15 +8,16 @@ import Tippy from '@tippyjs/react/headless';
 import styles from './SuggestedAccounts.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountPreview from './AccountPreview';
+import Image from '~/components/image';
 
 const cx = classNames.bind(styles);
 
-function AccountItem() {
+function AccountItem({ data }) {
   const renderPreview = (props) => {
     return (
       <div tabIndex="-1" {...props}>
         <PopperWrapper>
-          <AccountPreview />
+          <AccountPreview data={data} />
         </PopperWrapper>
       </div>
     );
@@ -26,13 +27,13 @@ function AccountItem() {
     <div>
       <Tippy interactive delay={[600, 0]} placement="bottom" offset={[0, 8]} render={renderPreview}>
         <div className={cx('account-item')}>
-          <img className={cx('avatar')} src="https://picsum.photos/200/200" alt="" />
+          <Image className={cx('avatar')} src={data.avatar} alt={data.full_name} />
           <div className={cx('item-info')}>
             <p className={cx('nickname')}>
-              <strong>kogi_1011</strong>
-              <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
+              <strong>{data.nickname}</strong>
+              {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />}
             </p>
-            <p className={cx('name')}>KOGI</p>
+            <p className={cx('name')}>{data.full_name}</p>
           </div>
         </div>
       </Tippy>
