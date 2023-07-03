@@ -37,7 +37,7 @@ function SuggestedAccounts({ label }) {
         <AccountItem key={result.id} data={result} />
       ))}
 
-      {amounts < 10 && (
+      {amounts < 10 && suggestedResult.length > 3 && (
         <div className={cx('more-btn')} onClick={handleSeeMore}>
           See all
         </div>
