@@ -9,3 +9,17 @@ export const add = async (data) => {
     console.log(error);
   }
 };
+
+export const suggested = async (amounts) => {
+  try {
+    const result = await request.get('users/suggested', {
+      params: {
+        amounts: amounts,
+      },
+    });
+
+    return result.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
