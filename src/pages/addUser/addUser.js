@@ -14,6 +14,7 @@ function AddUser() {
   const [bio, setBio] = useState('');
   const [tick, setTick] = useState(false);
   const [followings, setFollowings] = useState(0);
+  const [likes, setLikes] = useState(0);
   const [avatar, setAvatar] = useState(null);
   const [avatarURL, setAvatarURL] = useState('');
   const [result, setResult] = useState('');
@@ -28,6 +29,7 @@ function AddUser() {
     formData.append('avatar', avatar);
     formData.append('bio', bio);
     formData.append('followings_count', followings);
+    formData.append('likes_count', likes);
     formData.append('tick', tick ? 1 : 0);
 
     const postUser = async () => {
@@ -100,6 +102,16 @@ function AddUser() {
             value={followings}
             onChange={(e) => {
               setFollowings(e.target.value);
+            }}
+          />
+        </label>
+        <label className={cx('form-group')}>
+          Likes
+          <input
+            type="number"
+            value={likes}
+            onChange={(e) => {
+              setLikes(e.target.value);
             }}
           />
         </label>
