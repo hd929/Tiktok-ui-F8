@@ -10,11 +10,12 @@ export const add = async (data) => {
   }
 };
 
-export const suggested = async (amounts) => {
+export const suggested = async (followed, amounts) => {
   try {
     const result = await request.get('users/suggested', {
       params: {
         amounts: amounts,
+        followed: followed,
       },
     });
 

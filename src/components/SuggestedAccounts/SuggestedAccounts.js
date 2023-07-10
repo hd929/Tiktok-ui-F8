@@ -8,22 +8,22 @@ import * as userServices from '~/services/userService';
 
 const cx = classNames.bind(styles);
 
-function SuggestedAccounts({ label }) {
+function SuggestedAccounts({ label, followed }) {
   const [amounts, setAmounts] = useState(3);
   const [suggestedResult, setSuggestedResult] = useState([]);
 
   useEffect(() => {
     const fetchApi = async () => {
-      const result = await userServices.suggested(amounts);
+      const result = await userServices.suggested(followed, amounts);
 
-      // TODO: Fix fetch API 4 times
+      // FIX: Fix fetch API 4 times
       console.log(result);
 
       setSuggestedResult(result);
     };
 
     fetchApi();
-  }, [amounts]);
+  }, [followed, amounts]);
 
   const handleSeeMore = () => {
     setAmounts(amounts + 3);

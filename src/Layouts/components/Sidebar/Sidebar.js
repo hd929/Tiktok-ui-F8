@@ -29,7 +29,7 @@ export default function Sidebar() {
       </Menu>
 
       <SuggestedAccounts label="Suggested accounts" />
-      <SuggestedAccounts label="Following accounts" />
+      <SuggestedAccounts followed label="Following accounts" />
     </aside>
   );
 }
