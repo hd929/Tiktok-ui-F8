@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { REACT_APP_BASE_URL } from '~/config/environment';
 
 const request = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: REACT_APP_BASE_URL,
 });
 
 export const get = async (path, options = {}) => {

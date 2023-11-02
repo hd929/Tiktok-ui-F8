@@ -17,7 +17,7 @@ function SuggestedAccounts({ label, followed }) {
     const fetchApi = async () => {
       const result = await userServices.suggested(followed);
 
-      // TODO Fix fetch API 4 times
+      // TODO: Fix fetch API 4 times
       console.log(result);
 
       setSuggestedResult(result);
